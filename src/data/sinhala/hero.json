@@ -1,0 +1,18 @@
+{
+  "trailerButton": {
+    "btnName": "ට්‍රේලර් එක බලන්න",
+    "btnNameSecond": "යූටියුබ් එකෙන්",
+    "trailerLink": "https://www.youtube.com/watch?v=PxYdlaEH0Ac"
+  },
+  "logo": {
+    "src": "../../src/assets/img/ward21-logo2.png",
+    "alt": "WARD21"
+  },
+  "creditText": "යසිත දුලජගේ ගේම් එකක් සහ කතාවක්", 
+  "socialLinks": {
+    "facebook": "https://facebook.com",
+    "instagram": "https://instagram.com",
+    "github": "https://github.com",
+    "linkedin": "https://linkedin.com"
+  }
+}
