@@ -1,0 +1,126 @@
+import React, { useState, useEffect } from "react";
+import heroBg from "../../assets/img/herobg.png";
+import logo from "../../assets/img/ward21-logo2.png";
+import heroBtn from "../../assets/img/btns/herobtn.png";
+
+const AgeGate = ({ onSetLanguage, onVerify }) => {
+  const [birthDate, setBirthDate] = useState({ day: "", month: "", year: "" });
+  const [language, setLanguage] = useState("english");
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    // Check if age was previously verified
+    const verified = localStorage.getItem("ageVerified");
+    const lang = localStorage.getItem("language") || "english";
+
+    setLanguage(lang);
+    onSetLanguage(lang);
+
+    if (verified === "true") {
+      onVerify();
+    }
+  }, []);
+
+  const handleSubmit = () => {
+    const { day, month, year } = birthDate;
+
+    if (!day || !month || !year) {
+      setError("Please enter your birth date.");
+      return;
+    }
+
+    const birth = new Date(`${year}-${month}-${day}`);
+    const userAge = new Date().getFullYear() - birth.getFullYear();
+
+    if (userAge >= 18) {
+      onSetLanguage(language);
+      onVerify();
+    } else {
+      setError("You are not allowed.");
+      setBirthDate({ day: "", month: "", year: "" });
+    }
+  };
+
+  return (
+    <div
+      className="h-screen w-full flex flex-col items-center justify-center  px-20 bg-cover bg-center relative overflow-hidden"
+      style={{ backgroundImage: `url(${heroBg})` }}
+    >
+      {/* Overlay */}
+       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/60  pointer-events-none" />
+
+      <div className="  z-10 flex flex-col items-center justify-center text-center text-lg md:text-2xl tracking-widest">
+        {/* Logo */}
+        <img src={logo} alt="WARD21" className="w-120 select-none mr-5" />
+
+<div className="flex flex-col space-y-6 md:space-y-0 md:flex-row space-x-6 items-center mb-10">
+        {/* Language Selection */}
+        <div className="w-40 md:w-50 flex flex-col space-y-2  ">
+          <label className="text-white font-semibold mb-4">Language</label>
+<select
+  value={language}
+  onChange={(e) => setLanguage(e.target.value)}
+  className="w-full px-3 backdrop-blur-lg text-center py-3 border border-white/30 
+             rounded-4xl bg-black/60 text-white/60  focus:outline-none"
+>
+  <option className="bg-black text-white" value="english">English</option>
+  <option className="bg-black text-white" value="sinhala">සිංහල</option>
+</select>
+
+        </div>
+
+        {/* Date of Birth */}
+        <div className="flex  flex-col space-y-2 ">
+          <label className="text-white font-semibold mb-4">Date of Birth</label>
+          <div className="flex w-60 md:w-90  ">
+            <input
+              type="number"
+              placeholder="DD"
+              maxLength={2}
+              value={birthDate.day}
+              onChange={(e) =>
+                setBirthDate({ ...birthDate, day: e.target.value })
+              }
+              className="flex-1 backdrop-blur-lg text-center w-20 md:w-30 py-2 border rounded-bl-4xl rounded-tl-4xl border-white/30 bg-transparent text-white  placeholder-white/60 focus:outline-none"
+            />
+            <input
+              type="number"
+              placeholder="MM"
+              maxLength={2}
+              value={birthDate.month}
+              onChange={(e) =>
+                setBirthDate({ ...birthDate, month: e.target.value })
+              }
+              className="flex-1 backdrop-blur-lg text-center w-20 md:w-30 border-y border-white/30 bg-transparent text-white  placeholder-white/60 focus:outline-none"
+            />
+            <input
+              type="number"
+              placeholder="YYYY"
+              maxLength={4}
+              value={birthDate.year}
+              onChange={(e) =>
+                setBirthDate({ ...birthDate, year: e.target.value })
+              }
+              className="flex-2 backdrop-blur-lg text-center w-20 md:w-30 border rounded-br-4xl rounded-tr-4xl border-white/30 bg-transparent text-white  placeholder-white/60 focus:outline-none"
+            />
+          </div>
+        </div>
+</div>
+        {/* Confirm Button */}
+     <button
+  onClick={handleSubmit}
+  className="w-full mb-5 h-15  flex items-center justify-center text-white font-semibold tracking-widest
+             bg-center bg-no-repeat bg-contain opacity-70 transition-transform hover:opacity-100"
+  style={{ backgroundImage: `url(${heroBtn})` }}
+>
+  Confirm
+</button>
+
+        {/* Error Message */}
+        {error && <p className="text-red-500 mt-2">{error}</p>}
+      </div>
+    </div>
+  );
+};
+
+export default AgeGate;
