@@ -1,0 +1,23 @@
+{
+  "story": {
+    "title": "Game Story",
+
+    "paragraph1": {
+      "part1": "In WARD 21, players take on the role of a secret agent drawn to a hospital struck by a catastrophic virus outbreak. A desperate call from a woman named ",
+      "virus": " Emily ",
+      "part2": "  sets the stage for a tense investigation, but as you explore the derelict corridors, you’ll encounter twisted creatures, uncover scattered notes, and piece together the dark events that unfolded within these walls. Each discovery deepens the mystery, revealing shocking truths about the experiments that went horribly wrong."
+    },
+
+    "paragraph2": "The hospital holds more than just infected corridors,it holds the fragments of a mind haunted by guilt, loss, and obsession. As you struggle to survive, simple puzzles and locked rooms challenge your wits, while the choices you make determine how much of the story is revealed. With multiple endings shaped by your discoveries, WARD 21 keeps you questioning everything",
+
+    "questions": [
+      "Who is Emily?",
+      "Why does he feel a strange connection to this place?",
+      "How did all of this start?",
+      "Where does it end?",
+      "Is anything truly as it seems?"
+    ]
+  }
+}
+
+

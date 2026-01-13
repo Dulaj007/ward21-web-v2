@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import bgVideo from "../../assets/vid/bgrv.mp4";
 import TrailerButton from "../ui/TrailerButton";
-import { FaFacebookF, FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import HeroIcon from "../../assets/img/ward21-logo2.png";
+import { FaDiscord, FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 /**
  * HeroSection Component
@@ -76,8 +77,8 @@ const HeroSection = ({ language = "english" }) => {
       */}
       <div className="absolute ml-5 mt-5 sm-ml-0 sm:mt-0 w-60 md:w-80 lg:w-90 top-4/6 sm:top-4/5 left-1/2 -translate-x-1/2 z-10 md:-translate-x-1/2">
         <img
-          src={heroData.logo.src}
-          alt={heroData.logo.alt}
+          src={HeroIcon}
+          alt={"Ward 21"}
           className="md:w-80 lg:w-90 select-none"
         />
       </div>
@@ -105,8 +106,8 @@ const HeroSection = ({ language = "english" }) => {
           - hero-social-btn class handles hover and sizing styling.
       */}
       <div className="absolute top-4/7 md:top-1/2 sm:left-auto left-20 sm:right-20 transform -translate-y-1/2 z-20 flex flex-col gap-4">
-        <a href={heroData.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="hero-social-btn">
-          <FaFacebookF />
+        <a href={heroData.socialLinks.discord} target="_blank" rel="noopener noreferrer" className="hero-social-btn">
+          <FaDiscord />
         </a>
         <a href={heroData.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="hero-social-btn">
           <FaInstagram />
