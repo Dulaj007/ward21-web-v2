@@ -1,68 +1,303 @@
+/* ===============================
+   IMPORTS
+   =============================== */
+/* Import Google Fonts for body and headings */
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+/* Import TailwindCSS utilities */
+@import "tailwindcss";
+
+/* ===============================
+   ROOT VARIABLES
+   =============================== */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Primary accent colors used across the site */
+  --color-red: #d10000;
+  --color-yellow: #e8ad68;
+}
+
+/* ===============================
+   FONTS
+   =============================== */
+/* Self-hosted font: WC Mano Negra Bta */
+@font-face {
+  font-family: "WC Mano Negra Bta";
+  src: url("./assets/fonts/WCManoNegraBta/WCManoNegraBta.otf") format("opentype"),
+       url("./assets/fonts/WCManoNegraBta/WCManoNegraBta.ttf") format("truetype");
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-display: swap;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* ===============================
+   BODY & GLOBAL STYLES
+   =============================== */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: 'Special Elite', monospace; /* Base font */
+  @apply bg-black;                          /* Dark background globally */
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  @apply antialiased tracking-[4px];        /* Smooth text rendering and letter spacing */
+  font-family: "WC Mano Negra Bta", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif; /* Heading font fallback */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+/* ===============================
+   THEME COLORS
+   =============================== */
+.theme-color {
+  @apply text-[var(--color-red)]; /* Apply accent red color to text */
+}
+
+/* ===============================
+   HERO SOCIAL BUTTON
+   =============================== */
+.hero-social-btn {
+  @apply relative text-white text-2xl opacity-70 transition-opacity duration-300 hover:opacity-100 pb-2
+
+  /* Decorative underline using pseudo-element */
+  before:content-['']
+  before:absolute
+  before:left-0
+  before:top-full
+  before:h-[2px]
+  before:w-0
+  before:bg-white
+  before:transition-all
+  before:duration-300
+  /* Hover effects */
+  hover:before:w-full
+  hover:drop-shadow-[0_0_12px_rgba(255,0,0,0.7)]
+}
+
+/* ===============================
+   GLITCH TEXT EFFECT
+   =============================== */
+.stack-glitch {
+  display: grid;                  /* Layer multiple text spans */
+  grid-template-columns: 1fr;
+  font-size: clamp(0.75rem, 1vw, 1.1rem);
+  font-weight: 600;
+}
+
+.stack-glitch span {
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  /* Clip and stack calculations */
+  --stack-height: calc(100% / var(--stacks) - 1px);
+  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+  --clip-top: calc(var(--stack-height) * var(--index));
+  --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+
+  /* Combined stack entry and glitch animations */
+  animation:
+    stack-in 380ms cubic-bezier(.46,.29,0,1.24) backwards calc(var(--index) * 120ms),
+    glitch 2.2s ease infinite 2s alternate-reverse;
+}
+
+.stack-glitch span:nth-child(odd) { --glitch-translate: 6px; }
+.stack-glitch span:nth-child(even) { --glitch-translate: -6px; }
+
+/* Stack entry animation: moves text in from left with shadow */
+@keyframes stack-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-40%);
+    text-shadow: -2px 2px 0 red, 2px -2px 0 cyan;
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(40%);
+  }
+  100% {
+    transform: none;
+    text-shadow: none;
+  }
+}
+
+/* Continuous glitch animation */
+@keyframes glitch {
+  0% {
+    transform: translate(var(--glitch-translate));
+    text-shadow: -2px 2px 0 red, 2px -2px 0 cyan;
+  }
+  3% {
+    text-shadow: 2px -2px 0 red, -2px 2px 0 cyan;
+  }
+  6%, 100% {
+    transform: none;
+    text-shadow: none;
+  }
+}
+
+/* ===============================
+   NEWS TICKER
+   =============================== */
+.news-ticker {
+  overflow: hidden;      /* Hide overflowing content */
+  white-space: nowrap;   /* Single line scroll */
+}
+
+.news-ticker span {
+  display: inline-block;
+  padding-right: 4rem;    /* Space between repeated items */
+  animation: marquee 12s linear infinite; /* Infinite horizontal scroll */
+}
+
+/* ===============================
+   GRADIENT BUTTONS
+   =============================== */
+.gradient-button,
+.gradient-button-static {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9999px;       /* Fully rounded pill shape */
+  border: solid 2px transparent; 
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  position: relative;
+  transition: 0.4s ease;
+
+  /* Background and animated border using CSS variables */
+  --border-angle: 0turn;
+  --main-bg: conic-gradient(
+      from var(--border-angle),
+      #000000,
+      #000000 5%,
+      #000000 60%,
+      #000000 95%
+    );
+  --gradient-border: conic-gradient(
+      from var(--border-angle),
+      transparent 25%,
+      #e8ad68,
+      #d10000 99%,
+      transparent
+    );
+
+  background:
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+
+  animation: bg-spin 3s linear infinite; /* Rotate border animation */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.gradient-button {
+  padding: 0.5rem 1rem; /* Button padding */
+}
+
+/* Border rotation animation */
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
   }
-  a:hover {
-    color: #747bff;
+}
+
+/* Register custom CSS property for animation */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+/* ===============================
+   SHINE HOVER EFFECT FOR CARDS
+   =============================== */
+.shine-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: 0.8s;
+}
+
+.shine-card:hover::before {
+  left: 130%; /* Move shine across card on hover */
+}
+
+/* ===============================
+   SCALE IN ANIMATION
+   =============================== */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
   }
-  button {
-    background-color: #f9f9f9;
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.35s ease-out;
+}
+
+/* ===============================
+   INFINITE MARQUEE BASE
+   =============================== */
+.marquee {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.home-feedback:hover .marquee-track {
+  animation-play-state: paused; /* Pause scrolling on hover */
+}
+
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  flex-shrink: 0;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 400s; /* Base speed for marquee */
+}
+
+.marquee-left .marquee-track {
+  animation-name: marquee-left; /* Left scroll */
+}
+
+.marquee-right .marquee-track {
+  animation-name: marquee-right; /* Right scroll */
+}
+
+/* Scroll keyframes */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
