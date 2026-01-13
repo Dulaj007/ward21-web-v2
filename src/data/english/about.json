@@ -1,0 +1,22 @@
+{
+  "about": {
+    "intro_part1": "Step into the abandoned halls of",
+    "game_name": "WARD 21",
+    "intro_part2": ", a desolate hospital in",
+    "country": "Sri Lanka",
+    "intro_part3": "overrun by a deadly virus. A lone figure fights to uncover the truth behind a chilling outbreak, guided only by a mysterious distress call.",
+    "paragraph2": "Survive the horrors that lurk in the shadows, unravel hidden secrets, and question what is real and what is only in your mind."
+  },
+
+  "additionalInfo": {
+    "gameplay": {
+      "title": "Gameplay",
+      "text": "WARD 21 is a first-person survival horror experience where players fight to stay alive, manage limited resources, and explore a locked-down hospital. Solve puzzles, find keys to access hidden areas, collect notes to uncover the story, and use firearms against the infected. Every choice, discovery, and encounter shapes your path through the game."
+    },
+    "location": {
+      "title": "Location",
+      "text": "Set in a haunting, abandoned hospital in Sri Lanka, WARD 21 immerses players in decaying corridors, blood stained rooms, and deserted medical wards. The virus has consumed the entire facility, leaving only echoes of its past horrors. Every room holds clues, threats, and puzzles, challenging players to navigate the environment while uncovering the secrets that caused the outbreak."
+    }
+  }
+}
+

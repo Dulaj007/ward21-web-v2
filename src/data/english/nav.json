@@ -1,1 +1,10 @@
-["Top","About","Story","Requirements","Gameplay","News","Credits","Dev"]
+[
+  { "id": "home", "label": "Home" },
+  { "id": "about", "label": "About" },
+  { "id": "story", "label": "Story" },
+  { "id": "requirements", "label": "Requirements" },
+  { "id": "gameplay", "label": "Gameplay" },
+  { "id": "news", "label": "News" },
+  { "id": "credits", "label": "Credits" },
+  { "id": "dev", "label": "Dev" }
+]

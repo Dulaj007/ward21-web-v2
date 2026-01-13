@@ -1,0 +1,16 @@
+{
+  "Trailer": {
+    "title": "Gameplay Trailer",
+    "description": "The gameplay trailer of WARD 21 is out now on YouTube! Watch the thrilling survival horror experience unfold and get a glimpse of the abandoned hospital, terrifying creatures, and challenging puzzles.",
+    "btnPrimary": "Watch Trailer",
+    "btnSecondary": "Play",
+    "trailerLink": "https://www.youtube.com/watch?v=PxYdlaEH0Ac"
+  },
+    "news": [
+    {
+      "title": "Latest Update Live Now!",
+      "description": "WARD 21 version 0.4 is live! Discover the behind-the-scenes science and design of WARD 21. All bugs fixed, gameplay tested, animations polished, and new features added. Get ready to explore the abandoned hospital like never before.",
+      "btn": "See More",
+       "link": "/news"
+    }]
+}

@@ -5,14 +5,14 @@
     "trailerLink": "https://www.youtube.com/watch?v=PxYdlaEH0Ac"
   },
   "logo": {
-    "src": "../../src/assets/img/ward21-logo2.png",
+    "src": "/assets/img/ward21-logo2.png",
     "alt": "WARD21"
   },
   "creditText": "Game & Story by Yasitha Dulaj",
   "socialLinks": {
-    "facebook": "https://facebook.com",
-    "instagram": "https://instagram.com",
-    "github": "https://github.com",
-    "linkedin": "https://linkedin.com"
+    "discord": "https://discord.gg/GddycnXKb3",
+    "instagram": "https://www.instagram.com/itsdulaj/",
+    "github": "https://github.com/Dulaj007",
+    "linkedin": "https://www.linkedin.com/in/yasitha-dulaj/"
   }
 }
