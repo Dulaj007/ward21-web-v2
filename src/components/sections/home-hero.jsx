@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import bgVideo from "../../assets/vid/bgrv.mp4";
+import bgVideo from "../../assets/vid/bgv.mp4";
 import TrailerButton from "../ui/TrailerButton";
 import HeroIcon from "../../assets/img/ward21-logo2.png";
 import { FaDiscord, FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
