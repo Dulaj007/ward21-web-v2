@@ -135,10 +135,7 @@ const DownloadModal = ({ isOpen, onClose }) => {
     await push(downloadUsersRef, { name, email, timestamp: Date.now() });
 
     // Trigger file download
-    window.open(
-      "https://ward21.info.gf//Downloads/WARD21setup.zip",
-      "_blank"
-    );
+    window.open(import.meta.env.VITE_DOWNLOAD_LINK, "_blank");  
 
     // Reset modal state
     onClose();
